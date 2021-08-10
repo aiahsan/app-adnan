@@ -1,0 +1,271 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto:100,200,300,400,500');
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+button,
+a,
+link,
+p {
+  font-family: Roboto;
+  margin: 0px;
+}
+.container {
+  max-width: 187px;
+  margin: auto;
+}
+.heading-text {
+  font-size: 13px;
+  font-weight: 500;
+  font-size: 13px;
+  line-height: 15px;
+  color: #0d1841;
+}
+.heading-text-1 {
+  font-size: 13px;
+  font-weight: 500;
+  font-size: 13px;
+  line-height: 15px;
+  color: #8190a4;
+}
+.main {
+  background-color: white;
+  padding: 36px 10px 0px 10px;
+}
+.d-flex {
+  display: flex;
+}
+.top-head {
+  margin-bottom: 19px;
+}
+.top-head h1 {
+  margin-left: 10px;
+}
+.top-border {
+  background-color: rgba(0, 0, 0, 0.06);
+  border-radius: 5.6px;
+  width: 100%;
+  height: 1px;
+}
+.cst-brd-margin {
+  margin-top: 31px;
+  margin-bottom: 31px;
+}
+
+.count-btn h3 {
+  font-size: 11px;
+  line-height: 13px;
+  color: #0d1841;
+  font-weight: 400;
+}
+.count-btn p {
+  font-size: 9px;
+  line-height: 11px;
+  color: #0d1841;
+  font-weight: 400;
+}
+.count-btn {
+  background: #f5f6fa;
+  border-radius: 5px;
+  padding: 8px;
+  justify-content: space-between;
+  margin-bottom: 5px;
+}
+
+.admin-panel button {
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+}
+.admin-panel p {
+  font-size: 8.71514px;
+  line-height: 9px;
+  margin-left: 8.29px;
+  color: rgba(75, 81, 106, 0.67);
+}
+.admin-panel h1 {
+  font-weight: 500;
+  font-size: 11.8843px;
+  line-height: 18px;
+  margin-left: 8.29px;
+}
+.admin-panel {
+  background: #f5f6fa;
+  border: 0.935px solid rgba(255, 255, 255, 0.3);
+  box-sizing: border-box;
+  padding: 17.35px 16.35px 16.95px 16px;
+  display: flex;
+  justify-content: space-between;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  max-width: 187px;
+}
+.pos-rel {
+  position: relative;
+}
+
+.bg-title-btn .top-head {
+  margin-bottom: 0px !important;
+}
+.bg-title-btn {
+  background: #f5f6fa;
+  border-radius: 5px;
+  padding: 8px;
+}
+
+.textbox label {
+  font-style: normal;
+  font-weight: 500;
+  font-size: 9px;
+  line-height: 11px;
+  color: #0d1841;
+  position: absolute;
+  z-index: 1;
+  top: -7px;
+  left: 12px;
+  background-color: white;
+}
+.textbox input:focus {
+  outline: none;
+}
+.textbox input::placeholder,
+.textbox input {
+  font-size: 10px;
+  line-height: 12px;
+  padding: 12px;
+  color: rgba(13, 24, 65, 0.4);
+}
+.textbox input {
+  width: 100%;
+  border: 0px;
+  height: 100%;
+  box-sizing: border-box;
+  border-radius: 5px;
+}
+.textbox {
+  width: 100%;
+  background: #ffffff;
+  border: 1px solid #eaeaea;
+  box-sizing: border-box;
+  border-radius: 5px;
+  margin-top: 18px;
+  margin-bottom: 9px;
+}
+
+.greenbutton {
+  background: #00c29a;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+  font-weight: 500;
+  font-size: 10px;
+  line-height: 12px;
+  width: 100%;
+  padding: 7px 0px;
+  color: #ffffff;
+  border: none;
+  cursor: pointer;
+}
+
+.mb-35 button {
+  margin-bottom: 35px;
+}
+
+.w-assistant {
+  padding-top: 20px;
+  position: relative;
+}
+.w-assistant label {
+  font-weight: 500;
+  font-size: 10px;
+  line-height: 12px;
+  color: #0d1841;
+}
+
+.track {
+  position: relative;
+  margin-top: 14px;
+}
+.t-1 {
+  width: 100%;
+  height: 6px;
+  background: #f9f9f9;
+  border-radius: 5px;
+}
+.t-2 label {
+  font-size: 9px;
+  line-height: 11px;
+
+  text-align: center;
+
+  color: #8190a4;
+  margin-top: 6px;
+}
+.t-2 {
+  display: flex;
+  justify-content: space-between;
+  position: absolute;
+  width: 100%;
+  top: 0px;
+}
+.t-2 .active {
+  margin-top: -4px;
+}
+.t-2 .active label {
+  margin: 0px;
+}
+.tt-a {
+  background: #ffffff;
+  border: 2.5px solid #00c29a;
+  box-shadow: 0px 2px 4px rgba(140, 140, 140, 0.33);
+  width: 8px;
+  height: 8px;
+  border-radius: 8px;
+}
+.tt-u {
+  width: 4px;
+  height: 4px;
+  border-radius: 4px;
+  background: #00c29a;
+}
+
+.flex-main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.mt-write button {
+  margin-top: 24px;
+}
+.whitebutton {
+  background: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.13);
+  box-sizing: border-box;
+  box-shadow: 0px 7px 16px rgba(200, 200, 200, 0.25);
+  border-radius: 4px;
+  font-size: 9px;
+  line-height: 11px;
+
+  text-align: center;
+  padding: 5px 10px;
+  color: #0d1841;
+  cursor: pointer;
+}
+
+.btn-whites {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 19px;
+  margin-bottom: 67px;
+}
