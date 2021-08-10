@@ -5,7 +5,7 @@ const TextBox = ({ label, placeholder, height }) => {
       <div className='pos-rel'>
         <label>{label}</label>
       </div>
-      <input placeholder={placeholder} />
+      <textarea placeholder={placeholder}></textarea>
     </div>
   );
 };
