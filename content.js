@@ -5,7 +5,8 @@ function wordCount(word) {
 function characterdCount(word) {
   return word.replace(/\s/g, '').length;
 }
-
+const APIKey =
+  'EQU32VLUUO5BOMO5RO7HRRTUIUGTDLS23NJAUYDV7SNXU7K2LRFR5QL9O59MT93K8TEVY69XV69G71WEEMZGJ7G42Q7LLY2A00PD';
 const getUsers = () => {
   axios
     .get('https://reqres.in/api/users')
@@ -283,7 +284,7 @@ const screen5 = `
         <textarea id='gtextarea2' placeholder='Creating SEO Titles'></textarea>
       </div>
 
-      <button class='greenbutton' id='gtextarea2'>Generate Introduction</button>
+      <button class='greenbutton' id='g1-title2'>Generate Introduction</button>
       <div class='textbox' style='height: 54px'>
         <div class='pos-rel'>
           <label>Describe Content</label>
@@ -294,7 +295,7 @@ const screen5 = `
         ></textarea>
       </div>
 
-      <button id='gtextarea3' class='greenbutton'>Generate Introduction</button>
+      <button id='g1-title3' class='greenbutton'>Generate Introduction</button>
     </div>
   </div>
 
@@ -626,15 +627,135 @@ document.addEventListener('DOMContentLoaded', async () => {
           req.open('POST', baseUrl, true);
           req.setRequestHeader('Content-type', 'application/json');
           req.setRequestHeader('Accept', 'application/json');
-          req.setRequestHeader(
-            'APIKey',
-            'EQU32VLUUO5BOMO5RO7HRRTUIUGTDLS23NJAUYDV7SNXU7K2LRFR5QL9O59MT93K8TEVY69XV69G71WEEMZGJ7G42Q7LLY2A00PD'
-          );
+          req.setRequestHeader('APIKey', APIKey);
           req.setRequestHeader('Access-Control-Allow-Credentials', 'true');
 
           req.send(
             JSON.stringify({
               prompt: textarea.value,
+              token_max_length: 64,
+              temperature: 0.7,
+              top_p: 1,
+              stop_sequence: '\n',
+            })
+          );
+
+          req.onreadystatechange = function () {
+            // Call a function when the state changes.
+            if (
+              this.readyState === XMLHttpRequest.DONE &&
+              this.status === 200
+            ) {
+              console.log(JSON.parse(this.response).data.text, 'this');
+              document.querySelectorAll(
+                '[contenteditable=true]'
+              )[0].textContent = JSON.parse(this.response).data.text;
+              overlaybody.style.display = 'none';
+            } else {
+              overlaybody.style.display = 'none';
+            }
+          };
+        }
+      });
+      g1title1.addEventListener('click', (e) => {
+        if (textarea1.value.length > 0) {
+          e.preventDefault();
+          overlaybody.style.display = 'initial';
+
+          const req = new XMLHttpRequest();
+          const baseUrl = 'https://api.aixsolutionsgroup.com/v1/compose';
+
+          req.open('POST', baseUrl, true);
+          req.setRequestHeader('Content-type', 'application/json');
+          req.setRequestHeader('Accept', 'application/json');
+          req.setRequestHeader('APIKey', APIKey);
+          req.setRequestHeader('Access-Control-Allow-Credentials', 'true');
+
+          req.send(
+            JSON.stringify({
+              prompt: textarea1.value,
+              token_max_length: 64,
+              temperature: 0.7,
+              top_p: 1,
+              stop_sequence: '\n',
+            })
+          );
+
+          req.onreadystatechange = function () {
+            // Call a function when the state changes.
+            if (
+              this.readyState === XMLHttpRequest.DONE &&
+              this.status === 200
+            ) {
+              console.log(JSON.parse(this.response).data.text, 'this');
+              document.querySelectorAll(
+                '[contenteditable=true]'
+              )[0].textContent = JSON.parse(this.response).data.text;
+              overlaybody.style.display = 'none';
+            } else {
+              overlaybody.style.display = 'none';
+            }
+          };
+        }
+      });
+      g1title2.addEventListener('click', (e) => {
+        if (textarea2.value.length > 0) {
+          e.preventDefault();
+          overlaybody.style.display = 'initial';
+
+          const req = new XMLHttpRequest();
+          const baseUrl = 'https://api.aixsolutionsgroup.com/v1/compose';
+
+          req.open('POST', baseUrl, true);
+          req.setRequestHeader('Content-type', 'application/json');
+          req.setRequestHeader('Accept', 'application/json');
+          req.setRequestHeader('APIKey', APIKey);
+          req.setRequestHeader('Access-Control-Allow-Credentials', 'true');
+
+          req.send(
+            JSON.stringify({
+              prompt: textarea2.value,
+              token_max_length: 64,
+              temperature: 0.7,
+              top_p: 1,
+              stop_sequence: '\n',
+            })
+          );
+
+          req.onreadystatechange = function () {
+            // Call a function when the state changes.
+            if (
+              this.readyState === XMLHttpRequest.DONE &&
+              this.status === 200
+            ) {
+              console.log(JSON.parse(this.response).data.text, 'this');
+              document.querySelectorAll(
+                '[contenteditable=true]'
+              )[0].textContent = JSON.parse(this.response).data.text;
+              overlaybody.style.display = 'none';
+            } else {
+              overlaybody.style.display = 'none';
+            }
+          };
+        }
+      });
+      g1title3.addEventListener('click', (e) => {
+        if (textarea3.value.length > 0) {
+          e.preventDefault();
+          overlaybody.style.display = 'initial';
+
+          const req = new XMLHttpRequest();
+          const baseUrl = 'https://api.aixsolutionsgroup.com/v1/compose';
+
+          req.open('POST', baseUrl, true);
+          req.setRequestHeader('Content-type', 'application/json');
+          req.setRequestHeader('Accept', 'application/json');
+          req.setRequestHeader('APIKey', APIKey);
+          req.setRequestHeader('Access-Control-Allow-Credentials', 'true');
+
+          req.send(
+            JSON.stringify({
+              prompt: textarea3.value,
               token_max_length: 64,
               temperature: 0.7,
               top_p: 1,
@@ -678,15 +799,15 @@ document.addEventListener('DOMContentLoaded', async () => {
         let wordtotal = shadowEle.shadowRoot.querySelector('#wordtotal');
         let wordcount = shadowEle.shadowRoot.querySelector('#wordcount');
 
-        wordtotal.innerHTML = wordCount(textarea1.value);
-        wordcount.innerHTML = characterdCount(textarea1.value);
+        wordtotal.innerHTML = wordCount(textarea2.value);
+        wordcount.innerHTML = characterdCount(textarea2.value);
       });
       textarea3.addEventListener('keyup', (e) => {
         let wordtotal = shadowEle.shadowRoot.querySelector('#wordtotal');
         let wordcount = shadowEle.shadowRoot.querySelector('#wordcount');
 
-        wordtotal.innerHTML = wordCount(textarea1.value);
-        wordcount.innerHTML = characterdCount(textarea1.value);
+        wordtotal.innerHTML = wordCount(textarea3.value);
+        wordcount.innerHTML = characterdCount(textarea3.value);
       });
 
       shadowBot.addEventListener('click', () => {
