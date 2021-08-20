@@ -1,0 +1,24 @@
+{
+	"name": "cydbar",
+	"manifest_version": 3,
+	"version": "0.1",
+	"description": "",
+	"permissions": ["scripting"],
+	"host_permissions": ["*://*/*"],
+	"content_scripts": [
+		{
+			"matches": ["*://*/*"],
+			"js": ["content.js"],
+			"run_at": "document_start"
+		}
+	],
+	"web_accessible_resources": [
+		{
+			"resources": [
+				"https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700",
+				"style.css"
+			],
+			"matches": ["<all_urls>"]
+		}
+	]
+}

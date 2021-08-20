@@ -1,4 +1,8 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto:100,200,300,400,500');
+html,
+body {
+  width: 207px !important;
+}
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -22,8 +26,9 @@ p {
   margin: 0px;
 }
 .container {
-  max-width: 187px;
+  max-width: 207px;
   margin: auto;
+  width: 100%;
 }
 .heading-text {
   font-weight: 500;
@@ -40,13 +45,14 @@ p {
 }
 .main {
   background-color: white;
-  padding: 36px 10px 0px 10px;
+  padding: 10px 10px 0px 10px;
 }
 .d-flex {
   display: flex;
 }
 .top-head {
   margin-bottom: 19px;
+  cursor: pointer;
 }
 .top-head h1 {
   margin-left: 10px;
@@ -99,6 +105,29 @@ p {
   line-height: 18px;
   margin-left: 8.29px;
 }
+#parent-body {
+  width: 100%;
+}
+.back-btn svg {
+  width: 22px;
+  margin-bottom: 10px;
+}
+.back-btn:active,
+.back-btn:focus {
+  outline: none;
+  box-shadow: none;
+  border: none;
+}
+.back-btn {
+  background-color: white;
+  border: none;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  cursor: pointer;
+  height: 20px;
+  margin-left: 5px;
+}
 .admin-panel {
   background: #f5f6fa;
   border: 0.935px solid rgba(255, 255, 255, 0.3);
@@ -106,10 +135,14 @@ p {
   padding: 17.35px 16.35px 16.95px 16px;
   display: flex;
   justify-content: space-between;
-  position: absolute;
+  position: fixed;
   /* bottom: 0; */
   width: 100%;
-  max-width: 187px;
+
+  bottom: 25px;
+  right: 0px;
+  width: 100%;
+  max-width: 219px;
 }
 .pos-rel {
   position: relative;
@@ -269,4 +302,25 @@ p {
   justify-content: space-between;
   margin-top: 19px;
   margin-bottom: 67px;
+}
+
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 3px grey;
+  border-radius: 3px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #00c29a;
+  border-radius: 3px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #00c29a;
 }
