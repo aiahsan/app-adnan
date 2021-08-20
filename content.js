@@ -5,26 +5,16 @@ function wordCount(word) {
 function characterdCount(word) {
   return word.replace(/\s/g, '').length;
 }
-async function postData(url = '', data = {}) {
-  // Default options are marked with *
-  const response = await fetch(url, {
-    method: 'POST', // *GET, POST, PUT, DELETE, etc.
-    mode: 'cors', // no-cors, *cors, same-origin
-    cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
-    credentials: 'same-origin', // include, *same-origin, omit
-    headers: {
-      'Content-Type': 'application/json',
-      APIKey:
-        'EQU32VLUUO5BOMO5RO7HRRTUIUGTDLS23NJAUYDV7SNXU7K2LRFR5QL9O59MT93K8TEVY69XV69G71WEEMZGJ7G42Q7LLY2A00PD',
-      Accept: 'application/json',
-      // 'Content-Type': 'application/x-www-form-urlencoded',
-    },
-    redirect: 'follow', // manual, *follow, error
-    referrerPolicy: 'no-referrer', // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
-    body: JSON.stringify(data), // body data type must match "Content-Type" header
-  });
-  return response.json(); // parses JSON response into native JavaScript objects
-}
+
+const getUsers = () => {
+  axios
+    .get('https://reqres.in/api/users')
+    .then((response) => {
+      const users = response.data.data;
+      console.log(`GET users`, users);
+    })
+    .catch((error) => console.error(error));
+};
 
 const backSvg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><g data-name="Layer 2"><g data-name="arrow-back"><rect width="24" height="24" opacity="0" transform="rotate(90 12 12)"/><path fill="#d1d1d1" d="M19 11H7.14l3.63-4.36a1 1 0 1 0-1.54-1.28l-5 6a1.19 1.19 0 0 0-.09.15c0 .05 0 .08-.07.13A1 1 0 0 0 4 12a1 1 0 0 0 .07.36c0 .05 0 .08.07.13a1.19 1.19 0 0 0 .09.15l5 6A1 1 0 0 0 10 19a1 1 0 0 0 .64-.23 1 1 0 0 0 .13-1.41L7.14 13H19a1 1 0 0 0 0-2z"/></g></g></svg>`;
 const moreSvg = `
@@ -458,7 +448,11 @@ document.addEventListener('DOMContentLoaded', async () => {
   </div>
 </div>
 
-
+<div id="overlaybody" class="overlay">
+    <div class="overlay__inner">
+        <div class="overlay__content"><span class="spinner"></span></div>
+    </div>
+</div>
 </div>
     `;
       //check wp versions and attach to their respective parent to shadow dom
@@ -619,21 +613,50 @@ document.addEventListener('DOMContentLoaded', async () => {
       let g1title1 = shadowEle.shadowRoot.querySelector('#g1-title1');
       let g1title2 = shadowEle.shadowRoot.querySelector('#g1-title2');
       let g1title3 = shadowEle.shadowRoot.querySelector('#g1-title3');
+      let overlaybody = shadowEle.shadowRoot.querySelector('#overlaybody');
 
-      g1title.addEventListener('click', () => {
-        try {
-          alert();
-          postData('https://api.aixsolutionsgroup.com/v1/compose', {
-            prompt: textarea.value,
-            token_max_length: 64,
-            temperature: 0.7,
-            top_p: 1,
-            stop_sequence: '\n',
-          }).then((data) => {
-            console.log(data);
-          }); // JSON data parsed by `data.json()` call
-        } catch (e) {
-          console.log(e);
+      g1title.addEventListener('click', (e) => {
+        if (textarea.value.length > 0) {
+          e.preventDefault();
+          overlaybody.style.display = 'initial';
+
+          const req = new XMLHttpRequest();
+          const baseUrl = 'https://api.aixsolutionsgroup.com/v1/compose';
+
+          req.open('POST', baseUrl, true);
+          req.setRequestHeader('Content-type', 'application/json');
+          req.setRequestHeader('Accept', 'application/json');
+          req.setRequestHeader(
+            'APIKey',
+            'EQU32VLUUO5BOMO5RO7HRRTUIUGTDLS23NJAUYDV7SNXU7K2LRFR5QL9O59MT93K8TEVY69XV69G71WEEMZGJ7G42Q7LLY2A00PD'
+          );
+          req.setRequestHeader('Access-Control-Allow-Credentials', 'true');
+
+          req.send(
+            JSON.stringify({
+              prompt: textarea.value,
+              token_max_length: 64,
+              temperature: 0.7,
+              top_p: 1,
+              stop_sequence: '\n',
+            })
+          );
+
+          req.onreadystatechange = function () {
+            // Call a function when the state changes.
+            if (
+              this.readyState === XMLHttpRequest.DONE &&
+              this.status === 200
+            ) {
+              console.log(JSON.parse(this.response).data.text, 'this');
+              document.querySelectorAll(
+                '[contenteditable=true]'
+              )[0].textContent = JSON.parse(this.response).data.text;
+              overlaybody.style.display = 'none';
+            } else {
+              overlaybody.style.display = 'none';
+            }
+          };
         }
       });
 
